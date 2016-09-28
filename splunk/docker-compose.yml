@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+  splunk:
+    image: outcoldman/splunk:6.4.3
+    environment: 
+      - SPLUNK_START_ARGS=--accept-license --answer-yes --no-prompt
+    hostname: splunk
+    volumes:
+      - config:/opt/splunk/etc
+      - data:/opt/splunk/var
+    ports:
+      - 8000:8000
+  
+volumes:
+  config:
+    driver: local
+  data:
+    driver: local
